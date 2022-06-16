@@ -18,7 +18,7 @@ export class UsersService {
       throw new BadRequestException(['Password are not identical']);
     }
 
-    const userExist = this.usersRepository.findOne({
+    const userExist = await this.usersRepository.findOne({
       where: { username: createUserDto.username },
     });
 

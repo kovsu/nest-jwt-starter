@@ -24,7 +24,8 @@ export class LoaclStrategy extends PassportStrategy(Strategy) {
       throw new UnauthorizedException();
     }
 
-    if (!(await bcrypt.compare(user.password, password))) {
+    // 第一个参数是 明文，第二个是 加密之后的密码
+    if (!(await bcrypt.compare(password, user.password))) {
       throw new UnauthorizedException();
     }
 
